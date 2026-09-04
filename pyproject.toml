@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signalforge"
+version = "0.1.0"
+description = "An intelligence engine that finds and understands opportunities before presenting them to a person."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Bempong Herbert" }]
+requires-python = ">=3.9"
+dependencies = [
+    "twikit==2.2.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/1realbzy/SignalForge"
+Repository = "https://github.com/1realbzy/SignalForge"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+auth = [
+    "playwright>=1.40",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+testpaths = ["tests"]

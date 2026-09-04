@@ -1,0 +1,1 @@
+"""SignalForge — opportunity intelligence engine."""

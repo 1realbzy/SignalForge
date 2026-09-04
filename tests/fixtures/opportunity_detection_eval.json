@@ -1,0 +1,402 @@
+[
+  {
+    "id": "pos-employment-001",
+    "text": "We're hiring software engineers to work on our payments platform.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "corporate",
+    "notes": "single strong hiring signal; type not explicit"
+  },
+  {
+    "id": "pos-employment-002",
+    "text": "Open roles on the site reliability team, starting in October.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "casual",
+    "notes": "open roles without apply language"
+  },
+  {
+    "id": "pos-employment-003",
+    "text": "Position available for a nurse practitioner in our downtown clinic.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "healthcare",
+    "notes": "non-tech employment"
+  },
+  {
+    "id": "pos-employment-004",
+    "text": "Hiring for a full-time librarian role this fall. Submit your application this week.",
+    "expected_is_opportunity": true,
+    "expected_category": "employment",
+    "ambiguity": "clear",
+    "style": "institutional",
+    "notes": "full-time plus apply instruction"
+  },
+  {
+    "id": "pos-apply-001",
+    "text": "Apply here for the data analyst opening posted yesterday: https://example.org/analyst",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "recruiter",
+    "notes": "application instruction with URL"
+  },
+  {
+    "id": "pos-apply-002",
+    "text": "DM me to apply if you want to help run community events this season.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "founder",
+    "notes": "actionable contact"
+  },
+  {
+    "id": "pos-internship-001",
+    "text": "We're hiring summer software engineering interns. Apply here: https://example.com/interns",
+    "expected_is_opportunity": true,
+    "expected_category": "internship",
+    "ambiguity": "clear",
+    "style": "corporate",
+    "notes": "explicit opening plus apply URL"
+  },
+  {
+    "id": "pos-internship-002",
+    "text": "Internship applications are now open for the city policy lab.",
+    "expected_is_opportunity": true,
+    "expected_category": "internship",
+    "ambiguity": "clear",
+    "style": "public-sector",
+    "notes": "program applications open"
+  },
+  {
+    "id": "pos-fellowship-001",
+    "text": "Applications are now open for our 2026 civic fellowship. Stipend details on the site.",
+    "expected_is_opportunity": true,
+    "expected_category": "fellowship",
+    "ambiguity": "clear",
+    "style": "nonprofit",
+    "notes": "fellowship application window"
+  },
+  {
+    "id": "pos-grad-001",
+    "text": "Now accepting applications for our graduate scheme in operations research.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "corporate",
+    "notes": "graduate scheme; category may stay unset"
+  },
+  {
+    "id": "pos-research-001",
+    "text": "Research assistant opening in the climate modeling group. Email us to apply.",
+    "expected_is_opportunity": true,
+    "expected_category": "research",
+    "ambiguity": "clear",
+    "style": "academic",
+    "notes": "research opening plus contact"
+  },
+  {
+    "id": "pos-research-002",
+    "text": "Funded PhD opening in computational biology, cohort starts January.",
+    "expected_is_opportunity": true,
+    "expected_category": "research",
+    "ambiguity": "clear",
+    "style": "academic",
+    "notes": "funded doctoral opening"
+  },
+  {
+    "id": "pos-freelance-001",
+    "text": "Need a freelance designer for a three-month contract role. Apply here.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "startup",
+    "notes": "freelance plus apply; type rule may be conservative"
+  },
+  {
+    "id": "pos-apprentice-001",
+    "text": "Applications are now open for our electrical apprenticeship in Leeds.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "trades",
+    "notes": "apprenticeship applications; category optional"
+  },
+  {
+    "id": "pos-vacancy-001",
+    "text": "Two vacancies in the municipal archives team. Please send your CV.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "government",
+    "notes": "vacancy plus send CV"
+  },
+  {
+    "id": "pos-hiring-for-001",
+    "text": "Hiring for a bilingual customer-support person who can start next month.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "ops",
+    "notes": "hiring for without extra apply phrase"
+  },
+  {
+    "id": "neg-personal-001",
+    "text": "I just got hired at Northwind and I cannot wait to start!",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "personal",
+    "notes": "personal success"
+  },
+  {
+    "id": "neg-personal-002",
+    "text": "Thrilled to announce I joined the policy team this week.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "personal",
+    "notes": "joined announcement"
+  },
+  {
+    "id": "neg-personal-003",
+    "text": "I started my new role on Monday. Still unpacking the laptop.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "personal",
+    "notes": "started new role"
+  },
+  {
+    "id": "neg-promo-001",
+    "text": "I was promoted to staff engineer yesterday. Grateful for the team.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "personal",
+    "notes": "promotion"
+  },
+  {
+    "id": "neg-advice-001",
+    "text": "Here are five things you should do to get hired in a tough cycle.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "advice",
+    "notes": "career advice"
+  },
+  {
+    "id": "neg-advice-002",
+    "text": "Resume tips that actually worked for me in 2026.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "advice",
+    "notes": "resume tips"
+  },
+  {
+    "id": "neg-advice-003",
+    "text": "Interview tips for breaking into product management.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "advice",
+    "notes": "interview tips"
+  },
+  {
+    "id": "neg-advice-004",
+    "text": "Five tips for landing an internship if you have no experience.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "advice",
+    "notes": "internship mentioned in advice"
+  },
+  {
+    "id": "neg-market-001",
+    "text": "The tech job market is terrible right now.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "commentary",
+    "notes": "market discussion"
+  },
+  {
+    "id": "neg-market-002",
+    "text": "Nobody is hiring juniors this quarter, at least from what I can see.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "commentary",
+    "notes": "nobody is hiring"
+  },
+  {
+    "id": "neg-market-003",
+    "text": "The hiring freeze at several large firms is still in place.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "news",
+    "notes": "hiring freeze"
+  },
+  {
+    "id": "neg-historical-001",
+    "text": "We hired three engineers last year and that was enough for the roadmap.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "retrospective",
+    "notes": "historical hiring"
+  },
+  {
+    "id": "neg-commentary-001",
+    "text": "Companies should hire more junior developers instead of hoarding seniors.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "opinion",
+    "notes": "should hire commentary"
+  },
+  {
+    "id": "neg-commentary-002",
+    "text": "Would you take a job at this company after the last earnings call?",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "engagement-bait",
+    "notes": "unactionable question"
+  },
+  {
+    "id": "neg-future-001",
+    "text": "We may be hiring soon, but nothing is posted yet.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "vague",
+    "notes": "ambiguous future intent"
+  },
+  {
+    "id": "amb-001",
+    "text": "We might expand the team later this year if the budget lands.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "internal",
+    "notes": "conditional future growth"
+  },
+  {
+    "id": "amb-002",
+    "text": "Saw that Company X is hiring 200 people. Thoughts?",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "quote-commentary",
+    "notes": "third-party hiring commentary"
+  },
+  {
+    "id": "amb-003",
+    "text": "Looking for recruiter recommendations because the company is growing.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "networking",
+    "notes": "looking for recruiters, not candidates"
+  },
+  {
+    "id": "amb-004",
+    "text": "If you know anyone looking for work, tell them to follow this account.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "engagement",
+    "notes": "no specific opening"
+  },
+  {
+    "id": "amb-005",
+    "text": "We should probably hire a designer at some point.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "musing",
+    "notes": "hypothetical"
+  },
+  {
+    "id": "amb-006",
+    "text": "Opportunities in the link in bio if you want to see what we do.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "ambiguous",
+    "style": "promo",
+    "notes": "link in bio without hiring language"
+  },
+  {
+    "id": "edge-case-001",
+    "text": "WE'RE HIRING!!!",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "edge",
+    "style": "shout",
+    "notes": "casing and punctuation"
+  },
+  {
+    "id": "edge-hyphen-001",
+    "text": "New job-opening on the hospital careers page, apply here.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "edge",
+    "style": "hospital",
+    "notes": "hyphenated job-opening"
+  },
+  {
+    "id": "edge-short-001",
+    "text": "Hi",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "edge",
+    "style": "fragment",
+    "notes": "insufficient text"
+  },
+  {
+    "id": "edge-optional-001",
+    "text": "We're hiring analysts for the night shift.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "edge",
+    "style": "ops",
+    "notes": "missing optional RawPost fields",
+    "raw_post": {
+      "source": "newsletter",
+      "source_id": "edge-optional-001"
+    }
+  },
+  {
+    "id": "hard-fn-informal-001",
+    "text": "Need someone to cover the night desk this month. Pay is decent, hit my DMs if interested.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "informal",
+    "notes": "actionable opening without stock hiring/apply phrases"
+  },
+  {
+    "id": "hard-fp-commentary-001",
+    "text": "I can't believe we're hiring more executives after the layoffs.",
+    "expected_is_opportunity": false,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "commentary",
+    "notes": "present-tense hiring phrase used as criticism, not an opening"
+  },
+  {
+    "id": "hard-fn-lab-001",
+    "text": "Our lab needs a person to help with the field season, details below.",
+    "expected_is_opportunity": true,
+    "expected_category": null,
+    "ambiguity": "clear",
+    "style": "academic",
+    "notes": "role described without hiring verbs"
+  }
+]

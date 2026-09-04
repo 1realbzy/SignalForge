@@ -1,0 +1,20 @@
+# SignalForge
+
+An intelligence engine that finds and understands opportunities before presenting them to a person.
+
+This repository is licensed under the [Apache License 2.0](LICENSE).
+
+Public repository: [github.com/1realbzy/SignalForge](https://github.com/1realbzy/SignalForge)
+
+## Current status
+
+SignalForge currently includes:
+
+- a generic X/Twitter ingestion source
+- a deterministic opportunity-detection baseline
+
+Extraction, matching, and ranking are not implemented yet.
+
+The installed Python package import path remains `job_board_tool` so existing modules and tests stay stable. The project and distribution name is SignalForge.
+
+See [docs/x-twitter-source.md](docs/x-twitter-source.md) for ingestion and [docs/opportunity-detection.md](docs/opportunity-detection.md) for detection.
