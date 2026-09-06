@@ -22,3 +22,8 @@ cookies.json
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Live detection-eval corpora (real X text/labels must stay local)
+data/local/
+*.jsonl
+!evals/**/*.json

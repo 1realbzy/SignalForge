@@ -1,0 +1,22 @@
+{
+  "purpose": "Small diagnostic X search set for Opportunity Detection evidence-validation. Queries are discover() input only, never detector features.",
+  "queries": [
+    "we're hiring",
+    "applications are now open",
+    "internship applications",
+    "fellowship applications",
+    "nurse vacancy",
+    "teacher vacancy",
+    "I just got hired",
+    "job market is",
+    "resume tips",
+    "I was promoted",
+    "we may be hiring",
+    "join our team",
+    "looking for a contractor"
+  ],
+  "notes": [
+    "nurse vacancy: non-software healthcare opening language",
+    "teacher vacancy: additional non-tech, non-healthcare professional opening language to test domain generalization"
+  ]
+}
