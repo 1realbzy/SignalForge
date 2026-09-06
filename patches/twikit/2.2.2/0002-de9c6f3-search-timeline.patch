@@ -1,0 +1,96 @@
+# Temporary compatibility patch against twikit==2.2.2
+# Upstream: https://github.com/d60/twikit
+# PR: 419 (SearchTimeline-only)
+# Commit: de9c6f314f40a3c547ea4dea7cc87ed769b205bb
+# Files: twikit/client/gql.py, twikit/constants.py
+#
+diff --git a/twikit/client/gql.py b/twikit/client/gql.py
+--- a/twikit/client/gql.py
++++ b/twikit/client/gql.py
+@@ -11,6 +11,7 @@
+     JOIN_COMMUNITY_FEATURES,
+     LIST_FEATURES,
+     NOTE_TWEET_FEATURES,
++    SEARCH_TIMELINE_FEATURES,
+     SIMILAR_POSTS_FEATURES,
+     TWEET_RESULT_BY_REST_ID_FEATURES,
+     TWEET_RESULTS_BY_REST_IDS_FEATURES,
+@@ -31,7 +32,7 @@
+     def url(path):
+         return f'https://{DOMAIN}/i/api/graphql/{path}'
+ 
+-    SEARCH_TIMELINE = url('flaR-PUMshxFWZWPNpq4zA/SearchTimeline')
++    SEARCH_TIMELINE = url('R0u1RWRf748KzyGBXvOYRA/SearchTimeline')
+     SIMILAR_POSTS = url('EToazR74i0rJyZYalfVEAQ/SimilarPosts')
+     CREATE_NOTE_TWEET = url('iCUB42lIfXf9qPKctjE5rQ/CreateNoteTweet')
+     CREATE_TWEET = url('SiM_cAu83R0wnrpmKQQSEw/CreateTweet')
+@@ -152,11 +153,14 @@
+             'rawQuery': query,
+             'count': count,
+             'querySource': 'typed_query',
+-            'product': product
+-        }
+-        if cursor is not None:
+-            variables['cursor'] = cursor
+-        return await self.gql_get(Endpoint.SEARCH_TIMELINE, variables, FEATURES)
++            'product': product,
++            'withGrokTranslatedBio': True
++        }
++        if cursor is not None:
++            variables['cursor'] = cursor
++        return await self.gql_get(
++            Endpoint.SEARCH_TIMELINE, variables, SEARCH_TIMELINE_FEATURES
++        )
+ 
+     async def similar_posts(self, tweet_id: str):
+         variables = {'tweet_id': tweet_id}
+diff --git a/twikit/constants.py b/twikit/constants.py
+--- a/twikit/constants.py
++++ b/twikit/constants.py
+@@ -228,6 +228,46 @@
+     'responsive_web_enhance_cards_enabled': False
+ }
+ 
++SEARCH_TIMELINE_FEATURES = {
++    'rweb_video_screen_enabled': False,
++    'rweb_cashtags_enabled': True,
++    'profile_label_improvements_pcf_label_in_post_enabled': True,
++    'responsive_web_profile_redirect_enabled': False,
++    'rweb_tipjar_consumption_enabled': False,
++    'verified_phone_label_enabled': False,
++    'creator_subscriptions_tweet_preview_api_enabled': True,
++    'responsive_web_graphql_timeline_navigation_enabled': True,
++    'responsive_web_graphql_skip_user_profile_image_extensions_enabled': False,
++    'premium_content_api_read_enabled': False,
++    'communities_web_enable_tweet_community_results_fetch': True,
++    'c9s_tweet_anatomy_moderator_badge_enabled': True,
++    'responsive_web_grok_analyze_button_fetch_trends_enabled': False,
++    'responsive_web_grok_analyze_post_followups_enabled': True,
++    'responsive_web_jetfuel_frame': True,
++    'responsive_web_grok_share_attachment_enabled': True,
++    'responsive_web_grok_annotations_enabled': True,
++    'articles_preview_enabled': True,
++    'responsive_web_edit_tweet_api_enabled': True,
++    'graphql_is_translatable_rweb_tweet_is_translatable_enabled': True,
++    'view_counts_everywhere_api_enabled': True,
++    'longform_notetweets_consumption_enabled': True,
++    'responsive_web_twitter_article_tweet_consumption_enabled': True,
++    'content_disclosure_indicator_enabled': True,
++    'content_disclosure_ai_generated_indicator_enabled': True,
++    'responsive_web_grok_show_grok_translated_post': True,
++    'responsive_web_grok_analysis_button_from_backend': True,
++    'post_ctas_fetch_enabled': True,
++    'freedom_of_speech_not_reach_fetch_enabled': True,
++    'standardized_nudges_misinfo': True,
++    'tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled': True,
++    'longform_notetweets_rich_text_read_enabled': True,
++    'longform_notetweets_inline_media_enabled': False,
++    'responsive_web_grok_image_annotation_enabled': True,
++    'responsive_web_grok_imagine_annotation_enabled': True,
++    'responsive_web_grok_community_note_auto_translation_is_enabled': True,
++    'responsive_web_enhance_cards_enabled': False
++}
++
+ TWEET_RESULTS_BY_REST_IDS_FEATURES = {
+     'creator_subscriptions_tweet_preview_api_enabled': True,
+     'premium_content_api_read_enabled': False,

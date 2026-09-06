@@ -12,6 +12,7 @@ SignalForge currently includes:
 
 - a generic X/Twitter ingestion source
 - a deterministic opportunity-detection baseline
+- temporary `twikit==2.2.2` compatibility patches ([docs/dependencies/twikit-2.2.2-compat.md](docs/dependencies/twikit-2.2.2-compat.md))
 
 Extraction, matching, and ranking are not implemented yet.
 

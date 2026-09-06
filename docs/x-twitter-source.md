@@ -60,6 +60,14 @@ python scripts/generate_cookies.py --browser msedge
 
 The browser helper only opens a real browser for a manual login. It does not auto-type passwords or spoof client fingerprints.
 
+## Temporary Twikit compatibility patches
+
+Live X search on `twikit==2.2.2` currently requires two temporary upstream patches applied to the installed package, not to SignalForge source. See [docs/dependencies/twikit-2.2.2-compat.md](dependencies/twikit-2.2.2-compat.md).
+
+```text
+python -m scripts.apply_twikit_compat_patches
+```
+
 ## How queries are supplied
 
 The adapter does not hardcode production queries.
