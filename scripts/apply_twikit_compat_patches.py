@@ -32,6 +32,11 @@ PATCHES: tuple[tuple[str, Path, str], ...] = (
         Path("twikit") / "client" / "gql.py",
         "R0u1RWRf748KzyGBXvOYRA",
     ),
+    (
+        "0003-user-relocated-fields.patch",
+        Path("twikit") / "user.py",
+        "_relocated_or_legacy",
+    ),
 )
 
 _VERSION_RE = re.compile(r"^__version__\s*=\s*['\"]([^'\"]+)['\"]", re.MULTILINE)
@@ -70,10 +75,14 @@ def _normalize_lf(path: Path) -> None:
 def _files_for_patch(name: str) -> tuple[Path, ...]:
     if name.startswith("0001-"):
         return (Path("twikit") / "x_client_transaction" / "transaction.py",)
-    return (
-        Path("twikit") / "client" / "gql.py",
-        Path("twikit") / "constants.py",
-    )
+    if name.startswith("0002-"):
+        return (
+            Path("twikit") / "client" / "gql.py",
+            Path("twikit") / "constants.py",
+        )
+    if name.startswith("0003-"):
+        return (Path("twikit") / "user.py",)
+    raise SystemExit(f"Unknown patch file: {name}")
 
 
 def _apply_patch(target_root: Path, patch_path: Path) -> None:

@@ -18,4 +18,4 @@ Extraction, matching, and ranking are not implemented yet.
 
 The installed Python package import path remains `job_board_tool` so existing modules and tests stay stable. The project and distribution name is SignalForge.
 
-See [docs/x-twitter-source.md](docs/x-twitter-source.md) for ingestion, [docs/opportunity-detection.md](docs/opportunity-detection.md) for detection, and [evals/detection/README.md](evals/detection/README.md) for the local evidence-validation protocol.
+See [docs/architecture/source-adapters.md](docs/architecture/source-adapters.md) for ingestion, [docs/opportunity-detection.md](docs/opportunity-detection.md) for detection, and [evals/detection/README.md](evals/detection/README.md) for the local evidence-validation protocol.

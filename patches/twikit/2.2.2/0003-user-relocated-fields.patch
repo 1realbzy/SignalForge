@@ -1,0 +1,109 @@
+# Temporary compatibility patch against twikit==2.2.2
+# Origin: local SearchTimeline investigation (HTTP 200, empty Result)
+# File: twikit/user.py
+#
+# X relocated User identity fields out of legacy into core/avatar/location/
+# verification/dm_permissions/media_permissions. Twikit 2.2.2 User.__init__
+# KeyErrors on that shape; search_tweet() swallows the error as zero tweets.
+#
+diff --git a/twikit/user.py b/twikit/user.py
+--- a/twikit/user.py
++++ b/twikit/user.py
+@@ -12,6 +12,19 @@
+     from .message import Message
+     from .tweet import Tweet
+     from .utils import Result
++
++
++def _as_dict(value: object) -> dict:
++    return value if isinstance(value, dict) else {}
++
++
++def _relocated_or_legacy(
++    relocated: dict, relocated_key: str, legacy: dict, legacy_key: str
++):
++    """Use the relocated X field when that key is present; otherwise legacy."""
++    if relocated_key in relocated:
++        return relocated[relocated_key]
++    return legacy[legacy_key]
+ 
+ 
+ class User:
+@@ -89,24 +102,53 @@
+     def __init__(self, client: Client, data: dict) -> None:
+         self._client = client
+         legacy = data['legacy']
++        core = _as_dict(data.get('core'))
++        avatar = _as_dict(data.get('avatar'))
++        location = _as_dict(data.get('location'))
++        verification = _as_dict(data.get('verification'))
++        dm_permissions = _as_dict(data.get('dm_permissions'))
++        media_permissions = _as_dict(data.get('media_permissions'))
++        entities = _as_dict(legacy.get('entities'))
++        description_entities = _as_dict(entities.get('description'))
++        url_entities = _as_dict(entities.get('url'))
+ 
+         self.id: str = data['rest_id']
+-        self.created_at: str = legacy['created_at']
+-        self.name: str = legacy['name']
+-        self.screen_name: str = legacy['screen_name']
+-        self.profile_image_url: str = legacy['profile_image_url_https']
++        self.created_at: str = _relocated_or_legacy(
++            core, 'created_at', legacy, 'created_at'
++        )
++        self.name: str = _relocated_or_legacy(core, 'name', legacy, 'name')
++        self.screen_name: str = _relocated_or_legacy(
++            core, 'screen_name', legacy, 'screen_name'
++        )
++        self.profile_image_url: str = _relocated_or_legacy(
++            avatar, 'image_url', legacy, 'profile_image_url_https'
++        )
+         self.profile_banner_url: str = legacy.get('profile_banner_url')
+         self.url: str = legacy.get('url')
+-        self.location: str = legacy['location']
++        self.location: str = _relocated_or_legacy(
++            location, 'location', legacy, 'location'
++        )
+         self.description: str = legacy['description']
+-        self.description_urls: list = legacy['entities']['description']['urls']
+-        self.urls: list = legacy['entities'].get('url', {}).get('urls')
+-        self.pinned_tweet_ids: list[str] = legacy['pinned_tweet_ids_str']
++        self.description_urls: list = (
++            description_entities['urls'] if 'urls' in description_entities else []
++        )
++        self.urls: list = url_entities.get('urls')
++        self.pinned_tweet_ids: list[str] = (
++            legacy['pinned_tweet_ids_str']
++            if 'pinned_tweet_ids_str' in legacy
++            else []
++        )
+         self.is_blue_verified: bool = data['is_blue_verified']
+-        self.verified: bool = legacy['verified']
++        self.verified: bool = _relocated_or_legacy(
++            verification, 'verified', legacy, 'verified'
++        )
+         self.possibly_sensitive: bool = legacy['possibly_sensitive']
+-        self.can_dm: bool = legacy['can_dm']
+-        self.can_media_tag: bool = legacy['can_media_tag']
++        self.can_dm: bool = _relocated_or_legacy(
++            dm_permissions, 'can_dm', legacy, 'can_dm'
++        )
++        self.can_media_tag: bool = _relocated_or_legacy(
++            media_permissions, 'can_media_tag', legacy, 'can_media_tag'
++        )
+         self.want_retweets: bool = legacy['want_retweets']
+         self.default_profile: bool = legacy['default_profile']
+         self.default_profile_image: bool = legacy['default_profile_image']
+@@ -121,7 +163,11 @@
+         self.statuses_count: int = legacy['statuses_count']
+         self.is_translator: bool = legacy['is_translator']
+         self.translator_type: str = legacy['translator_type']
+-        self.withheld_in_countries: list[str] = legacy['withheld_in_countries']
++        self.withheld_in_countries: list[str] = (
++            legacy['withheld_in_countries']
++            if 'withheld_in_countries' in legacy
++            else []
++        )
+         self.protected: bool = legacy.get('protected', False)
+ 
+     @property

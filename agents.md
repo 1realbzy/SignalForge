@@ -547,33 +547,6 @@ Opportunity Detection
 
 ---
 
-# Legacy NLP Project
-
-The reusable X/Twitter ingestion code originated from an older NLP project.
-
-That project is not the active codebase.
-
-Treat it as read-only reference material.
-
-Do not modify it.
-
-Do not copy its Ghanaian Pidgin-specific logic into this repository.
-
-Specifically, do not introduce its:
-
-* Ghanaian Pidgin classification
-* Pidgin marker sets
-* Ghana/Nigeria location heuristics
-* corpus-specific scoring
-* corpus-specific word limits
-* aggressive text cleaning
-* corpus-specific deduplication
-* dataset persistence logic
-
-The current platform must remain source- and domain-generic.
-
----
-
 # Product Direction
 
 The long-term goal is an opportunity intelligence system rather than a conventional job board.

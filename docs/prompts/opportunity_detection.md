@@ -8,8 +8,6 @@ You are working in the active repository:
 
 This is the active codebase for the opportunity intelligence platform.
 
-Do not modify the legacy NLP repository. Treat it as read-only reference material.
-
 Before doing anything, read:
 
 * `AGENTS.md`
@@ -472,20 +470,19 @@ Source-specific behavior belongs inside the source adapter.
 
 ---
 
-# 20. No Legacy NLP Logic
-
-Do not copy from the legacy NLP project:
-
-* Ghanaian Pidgin classification
-* Pidgin marker sets
-* Ghana/Nigeria heuristics
-* corpus-specific scoring
-* corpus-specific word limits
-* aggressive text cleaning
-* corpus-specific deduplication
-* corpus persistence behavior
+# 20. Domain-Generic Detector
 
 The detector must remain source- and domain-generic.
+
+Do not introduce:
+
+* language-variety classifiers
+* location heuristics
+* corpus-specific cleaning
+* corpus-specific deduplication
+* corpus-specific persistence
+
+Detection must operate on the internal raw-record contract only.
 
 ---
 

@@ -277,7 +277,7 @@ Never:
 * commit session cookies
 * log passwords
 * expose authentication tokens
-* copy authentication material from the legacy project
+* copy credentials or authentication material from elsewhere
 
 Authentication should be separate from opportunity processing.
 
@@ -518,31 +518,6 @@ Empty source
 ```
 
 This distinction becomes important for monitoring source health and evaluating discovery quality.
-
----
-
-# 23. Legacy NLP Project
-
-The original X/Twitter ingestion implementation was derived from an older NLP project.
-
-That project is reference material only.
-
-It must not become a runtime dependency.
-
-The current repository must not import from it.
-
-The following legacy project-specific behavior must not be carried into the source adapter:
-
-* Ghanaian Pidgin classification
-* Pidgin marker sets
-* Ghana/Nigeria location heuristics
-* corpus-specific quality scoring
-* corpus-specific word limits
-* aggressive corpus text cleaning
-* corpus-specific deduplication
-* corpus persistence behavior
-
-Reusable source-ingestion mechanics may be recreated where appropriate, but project-specific NLP behavior must remain excluded.
 
 ---
 

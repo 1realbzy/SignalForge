@@ -52,8 +52,8 @@ class XSourceConfig:
 class XTwitterSource:
     """Generic X/Twitter search source.
 
-    Queries are supplied by the caller. This class does not know about jobs,
-    Pidgin, or any domain-specific filtering. It yields RawPost records.
+    Queries are supplied by the caller. This class does not perform job- or
+    domain-specific filtering. It yields RawPost records.
     """
 
     def __init__(
